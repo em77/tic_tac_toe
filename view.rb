@@ -28,8 +28,9 @@ module Prompt
     gets.chomp.upcase
   end
 
-  def self.get_mark_placement(choices)
-    print "\nEnter where to place your mark (#{choices.join(", ")}): "
+  def self.get_mark_placement(choices, player_name)
+    print "\n#{player_name}, enter where to place your mark 
+          (#{choices.join(", ")}): "
     gets.chomp.downcase
   end
 
