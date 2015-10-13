@@ -1,11 +1,9 @@
 class Board
-  attr_accessor :spaces #, :x_marks, :o_marks
+  attr_accessor :spaces
   def initialize
     @spaces = [['', '', ''],
               ['', '', ''],
               ['', '', '']]
-    # @x_marks = []
-    # @o_marks = []
   end
 
   def win
@@ -20,15 +18,6 @@ class Board
       [ [0, 2], [1, 1], [2, 0] ]
     ]
   end
-
-  # def mark_checker
-  #   spaces.each_with_index do |row, row_index|
-  #     row.each_with_index do |cell, cell_index|
-  #       x_marks << [row_index, cell_index] if cell == 'X'
-  #       o_marks << [row_index, cell_index] if cell == 'O'
-  #     end
-  #   end
-  # end
 
   def find_winner
     win.each do |situation|

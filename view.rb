@@ -38,7 +38,11 @@ module Prompt
     gets.chomp.downcase
 end
 
-module Messages
+module Message
+  def self.greeting
+    puts "Welcome to Tic-Tac-Toe, a game for those of strong will"
+  end
+
   def self.win(player_name, player_mark)
     print "\n#{player_name} (#{player_mark}) has won!"
   end
