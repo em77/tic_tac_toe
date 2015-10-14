@@ -37,6 +37,7 @@ module Prompt
   def self.play_again
     print "\nWould you like to play again?\n(Yes or No): "
     gets.chomp.downcase
+  end
 end
 
 module Message
