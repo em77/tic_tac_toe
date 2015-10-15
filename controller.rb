@@ -9,6 +9,35 @@ class Game
     @continue = nil
   end
 
+  def win
+    [
+      [ [0, 0], [0, 1], [0, 2] ],
+      [ [0, 1], [1, 1], [2, 1] ],
+      [ [2, 0], [2, 1], [2, 2] ],
+      [ [0, 0], [1, 0], [2, 0] ],
+      [ [1, 0], [1, 1], [1, 2] ],
+      [ [0, 2], [1, 2], [2, 2] ],
+      [ [0, 0], [1, 1], [2, 2] ],
+      [ [0, 2], [1, 1], [2, 0] ]
+    ]
+  end
+
+  def find_winner(board)
+    win.each do |situation|
+      x_mark_count = 0
+      o_mark_count = 0
+      situation.each do |cell|
+        x_mark_count += 1 if board.spaces[cell[0]][cell[1]] == 'X'
+        o_mark_count += 1 if board.spaces[cell[0]][cell[1]] == 'O'
+      end
+      return 'X' if x_mark_count == 3
+      return 'O' if o_mark_count == 3
+      x_mark_count = 0
+      o_mark_count = 0
+    end
+    nil
+  end
+
   def get_mark_choice(player)
     choice = nil
     until (choice == 'X') || (choice == 'O')
@@ -55,7 +84,7 @@ class Game
     Display::board(board.spaces)
     mark_placement = get_mark_placement(current_player.name)
     board.place_mark(mark_placement, current_player.mark)
-    winner = board.find_winner
+    winner = find_winner(board)
     if winner
       Display::board(board.spaces)
       Message::win(current_player.name, current_player.mark)
