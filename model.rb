@@ -51,6 +51,8 @@ class Board
       end
       return 'X' if x_mark_count == 3
       return 'O' if o_mark_count == 3
+      x_mark_count = 0
+      o_mark_count = 0
     end
     nil
   end
@@ -58,7 +60,7 @@ end
 
 class Player
   attr_accessor :name, :mark
-  def initialize(name, mark)
+  def initialize(name)
     @name = name
     @mark = mark
   end

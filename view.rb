@@ -23,8 +23,8 @@ module Prompt
     gets.chomp
   end
 
-  def self.get_mark_choice(player_number)
-    print "\nPlease enter player ##{player_number}'s mark (X or O): "
+  def self.get_mark_choice(player_name)
+    print "\nPlease enter #{player_name}'s mark (X or O): "
     gets.chomp.upcase
   end
 
@@ -42,7 +42,7 @@ end
 
 module Message
   def self.greeting
-    puts "Welcome to Tic-Tac-Toe, a game for those of strong will"
+    puts "\nWelcome to Tic-Tac-Toe, a game for those of strong will"
   end
 
   def self.win(player_name, player_mark)
@@ -51,5 +51,13 @@ module Message
 
   def self.no_win
     print "\nIt's a draw! Nobody won."
+  end
+
+  def self.invalid_mark_placement
+    print "\nERROR: There is already a mark in that space.\n\n"
+  end
+
+  def self.exit
+    print "\nThank you for playing!\n\n"
   end
 end
