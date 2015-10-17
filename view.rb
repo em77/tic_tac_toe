@@ -1,7 +1,7 @@
 module Display
-  def self.board(board)
+  def self.board(board_spaces)
     print_space
-    board.each do |row|
+    board_spaces.each do |row|
       print_row = ""
       row.each do |cell|
         cell = " " if cell.empty?
@@ -29,8 +29,8 @@ module Prompt
   end
 
   def self.get_mark_placement(choices, player_name)
-    print "\n#{player_name}, enter where to place your mark 
-          (#{choices.join(", ")}): "
+    print "\n#{player_name}, enter where to place your mark \n(#{choices.join(", "
+      )}): "
     gets.chomp.downcase
   end
 

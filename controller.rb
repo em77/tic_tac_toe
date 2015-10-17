@@ -46,18 +46,25 @@ class Game
     choice
   end
 
-  def mark_space_occupied?(mark_placement)
-    #
+  def mark_space_occupied?(mark_placement, board)
+    row_cell = board.word_to_cell_converter(mark_placement)
+    if board.spaces[row_cell[0]][row_cell[1]].empty?
+      return false
+    else
+      Message::invalid_mark_placement
+      return true
+    end
   end
 
-  def get_mark_placement(player_name)
+  def get_mark_placement(player_name, board)
     choices = ['upper-left', 'upper-middle', 'upper-right', 'center-left', 
               'center-middle', 'center-right', 'lower-left', 'lower-middle', 
               'lower-right']
     mark_placement = nil
+    space_occupied = nil
     until choices.include?(mark_placement)
       mark_placement = Prompt::get_mark_placement(choices, player_name)
-      # insert mark checking here
+      mark_placement = nil if mark_space_occupied?(mark_placement, board)
     end
     mark_placement
   end
@@ -82,7 +89,7 @@ class Game
 
   def game_flow(current_player, board)
     Display::board(board.spaces)
-    mark_placement = get_mark_placement(current_player.name)
+    mark_placement = get_mark_placement(current_player.name, board)
     board.place_mark(mark_placement, current_player.mark)
     winner = find_winner(board)
     if winner

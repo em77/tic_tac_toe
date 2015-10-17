@@ -6,7 +6,7 @@ class Board
               ['', '', '']]
   end
 
-  def place_mark(mark_placement, mark)
+  def word_to_cell_converter(mark_placement)
     row = nil
     cell = nil
     mark_placement.split('-').each do |n|
@@ -25,7 +25,12 @@ class Board
         cell = 2
       end
     end
-    spaces[row][cell] = mark
+    [row, cell]
+  end
+
+  def place_mark(mark_placement, mark)
+    row_cell = word_to_cell_converter(mark_placement)
+    spaces[row_cell[0]][row_cell[1]] = mark
   end
 end
 
