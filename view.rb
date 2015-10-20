@@ -38,6 +38,12 @@ module Prompt
     print "\nWould you like to play again?\n(Yes or No): "
     gets.chomp.downcase
   end
+
+  def self.play_person_or_computer
+    print "\nWould you like to play against another human or against the " +
+    "computer?\n(human or computer): "
+    gets.chomp.downcase
+  end
 end
 
 module Message
