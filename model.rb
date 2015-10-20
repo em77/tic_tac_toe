@@ -49,6 +49,10 @@ class Board
     nil   
   end
 
+  def all_spaces_full?
+    return true unless spaces.flatten.any? {|cell| cell == ''}
+  end
+
   def word_to_cell_converter(mark_placement)
     row = nil
     cell = nil

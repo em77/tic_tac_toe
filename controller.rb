@@ -81,6 +81,10 @@ class Game
       Display::board(board.spaces)
       Message::win(current_player.name, current_player.mark)
       return true
+    elsif board.all_spaces_full?
+      Display::board(board.spaces)
+      Message::no_win
+      return true
     end
     false
   end
@@ -141,7 +145,9 @@ class AI
   def find_opposite_corner_opportunity(mark)
     board.corners.each do |corner|
       if board.spaces[corner[0]][corner[1]] == mark
-        return board.opposite_corner(corner)
+        if board.mark_space_occupied?(board.opposite_corner(corner)) == false
+          return board.opposite_corner(corner)
+        end
       end
     end
     nil
