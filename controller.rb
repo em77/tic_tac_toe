@@ -179,6 +179,8 @@ class AI
     return block_opportunity unless block_opportunity.nil?
     center_opportunity = mark_space_checker([board.center])
     return center_opportunity unless center_opportunity.nil?
+    two_in_row_opportunity = find_opportunity(computer_player.mark, 2)
+    return two_in_row_opportunity unless two_in_row_opportunity.nil?
     opp_corner_opportunity = find_opposite_corner_opportunity(\
       board.opposite_mark_choice(computer_player.mark))
     return opp_corner_opportunity unless opp_corner_opportunity.nil?
