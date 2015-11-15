@@ -3,9 +3,9 @@ module Display
     print_space
     board_spaces.each do |row|
       print_row = ""
-      row.each do |cell|
-        cell = " " if cell.empty?
-        print_row << "|_#{cell}_"
+      row.each do |col|
+        col = " " if col.empty?
+        print_row << "|_#{col}_"
       end
       print "#{print_row}|\n".rjust(32)
     end

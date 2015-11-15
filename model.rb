@@ -35,8 +35,9 @@ class Board
     ]
   end
 
-  def opposite_corner(corner)
-    case corner
+  def opposite_corner(row, col)
+    row_col = [row,col]
+    case row_col
     when [0,0]
       return [2,2]
     when [2,2]
@@ -50,49 +51,15 @@ class Board
   end
 
   def all_spaces_full?
-    return true unless spaces.flatten.any? {|cell| cell == ''}
+    return true unless spaces.flatten.any? {|col| col == ''}
   end
 
-  def word_to_cell_converter(mark_placement)
-    row = nil
-    cell = nil
-    mark_placement.split('-').each do |n|
-      case n
-      when 'upper'
-        row = 0
-      when 'center'
-        row = 1
-      when 'lower'
-        row = 2
-      when 'left'
-        cell = 0
-      when 'middle'
-        cell = 1
-      when 'right'
-        cell = 2
-      end
-    end
-    [row, cell]
-  end
-
-  def opposite_mark_choice(mark)
-    if mark == 'X'
-      return 'O'
-    else
-      return 'X'
-    end
-  end
-
-  def mark_space_occupied?(mark_placement)
-    if spaces[mark_placement[0]][mark_placement[1]].empty?
+  def mark_space_occupied?(row, col)
+    if spaces[row][col].empty?
       return false
     else
       return true
     end
-  end
-
-  def place_mark(mark_placement, mark)
-    spaces[mark_placement[0]][mark_placement[1]] = mark
   end
 end
 
@@ -102,5 +69,13 @@ class Player
     @name = name
     @mark = mark
     @computer = computer
+  end
+
+  def opposite_mark_choice
+    if mark == 'X'
+      return 'O'
+    else
+      return 'X'
+    end
   end
 end
