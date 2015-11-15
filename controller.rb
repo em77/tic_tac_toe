@@ -76,7 +76,6 @@ class Game
 
   def computer_mark_action(player)
     mark_placement = ai.next_move
-    puts "mark_placement = #{mark_placement}"
     place_mark(mark_placement[0], mark_placement[1], player.mark)
   end
 
@@ -95,7 +94,6 @@ class Game
   end
 
   def game_flow(current_player)
-    puts "board.spaces = #{board.spaces}"
     Display::board(board.spaces)
     if current_player.computer
       computer_mark_action(current_player)
@@ -244,7 +242,6 @@ class AI
       if (opportunity.count == opportunity_count) && \
         (board.mark_space_occupied?(opportunity[0][0], opportunity[0][1]) == \
           false)
-        puts "opp = #{opportunity[0]}"
         return opportunity[0]
       end
     end
