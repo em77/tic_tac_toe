@@ -3,3 +3,5 @@
 
 This is a command-line based Tic-Tac-Toe game written in Ruby. You can take
 turns playing against another human player or play against the computer.
+
+To run the game, type 'ruby controller.rb' at your command-line.
