@@ -59,6 +59,10 @@ module Message
     print "\nIt's a draw! Nobody won."
   end
 
+  def self.computer_placed_mark
+    print "\nThe computer has placed its mark:"
+  end
+
   def self.invalid_mark_placement
     print "\nERROR: There is already a mark in that space.\n\n"
   end

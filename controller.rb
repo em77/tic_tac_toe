@@ -97,6 +97,7 @@ class Game
     Display::board(board.spaces)
     if current_player.computer
       computer_mark_action(current_player)
+      Message::computer_placed_mark
     else
       human_mark_action(current_player)
     end
